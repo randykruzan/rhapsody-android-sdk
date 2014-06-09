@@ -1,0 +1,45 @@
+Requires Android SDK 14
+
+Dependencies:
+android-support-v4
+dagger
+retrofit
+javax.inject
+gson
+
+To play a track you need to:
+
+1. include following permissions
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+2. add playback service <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
+3. Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
+
+Login (optional, unsigned user can still play sample tracks)
+4. Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
+5. token = new AuthToken(accessToken, refreshToken, expiresIn)
+6. rhapsody.getSessionManager().openSession(token, mySessionCallback)
+
+7. You probably want to listen to playback state changes and errors: rhapsody.getPlayer().addStateListener(myPlayerStateListener)
+8. Play a track with player.play(trackId)
+
+
+If you want to use notification controls:
+1. Add notification service <service android:name="com.rhapsody.player.notifications.StartNotificationService" />
+2. make your notification layouts(expanded, standard or both)
+3. implement AbstractNotificationProperties
+4. player.setNotificationProperties(myNotificationProperties)
+5. implement NotificationActionListener
+6. player.registerNotificationActionListener(myNotificationActionListener)
+Note: play/pause and close are handled by the sdk, you handle previous/next and open player actions
+
+
+To enable wake lock controls:
+1. add to manifest
+<receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
+	<intent-filter>
+		<action android:name="android.intent.action.MEDIA_BUTTON" />
+	</intent-filter>
+</receiver>
+2. Pause/Play is handled by the sdk, previous/next is forwarded to registered notification action listener
