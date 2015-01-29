@@ -9,7 +9,6 @@ The Rhapsody Android SDK supports Android 4.0 (API 14) and up.
 ## SDK Requirements
 - Android SDK 14 or higher
 
-
 ## Sample App Requirements
 - Android SDK 14 or higher
 - Dagger
@@ -17,5 +16,12 @@ The Rhapsody Android SDK supports Android 4.0 (API 14) and up.
 - javax.inject
 - gson
 
-
 ## Download
+The Rhapsody Android SDK is available as a jar.
+
+compile 'com.rhapsody.cedar:cedar:1.1'
+
+
+
+
+
