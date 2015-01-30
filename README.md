@@ -6,18 +6,22 @@ The Rhapsody Android SDK was designed to provide a very easy way to integrate st
 We have provided here the SDK (rhapsodysdk.jar) and a sample application which provides examples you can use to build your own app with Rhapsody streaming music.
 
 
-## Android Version Support
+## Rhapsody SDK
+
+### Android Version Support
 The Rhapsody Android SDK supports Android 4.0 (API 14) and up.
 
-## SDK Requirements
+### SDK Requirements
 - Android SDK 14 or higher
 
-## Download
+### Download
 The Rhapsody Android SDK is available as a jar. You can download the rhapsodysdk.jar and add it to your Android Studio project gradle.build file:
 
 ```groovy
 compile files('libs/rhapsodysdk.jar')
 ```
+
+## Rhapsody SDK Sample App
 
 ## Sample App Requirements
 - Android SDK 14 or higher
