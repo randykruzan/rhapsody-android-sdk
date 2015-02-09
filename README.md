@@ -46,27 +46,36 @@ You might be asked to install additional components such as build tools. You may
 
 
 #### Playing a track
-1. include following permissions
+- include following permissions
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-2. add playback service <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
-3. Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
+```
+- add playback service <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
+- Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
 
 #### Loggin in
-4. Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
-5. token = new AuthToken(accessToken, refreshToken, expiresIn)
-6. rhapsody.getSessionManager().openSession(token, mySessionCallback)
-7. You probably want to listen to playback state changes and errors: rhapsody.getPlayer().addStateListener(myPlayerStateListener)
-8. Play a track with player.play(trackId)
+- Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
+```java
+token = new AuthToken(accessToken, refreshToken, expiresIn)
+```
+```java
+rhapsody.getSessionManager().openSession(token, mySessionCallback)
+```
+- You probably want to listen to playback state changes and errors: 
+```java
+rhapsody.getPlayer().addStateListener(myPlayerStateListener)
+```
+- Play a track with player.play(trackId)
 
 #### Extras
 If you want to use transport controls in the notification:
-. make your notification layouts (expanded, standard or both)
-. implement AbstractNotificationProperties
-. player.setNotificationProperties(myNotificationProperties)
-. implement NotificationActionListener
-. player.registerNotificationActionListener(myNotificationActionListener)
+- make your notification layouts (expanded, standard or both)
+- implement AbstractNotificationProperties
+- player.setNotificationProperties(myNotificationProperties)
+- implement NotificationActionListener
+- player.registerNotificationActionListener(myNotificationActionListener)
 
 ##### Notes
 - play/pause and close are handled by the sdk, you handle previous/next and open player actions
@@ -76,10 +85,14 @@ If you want to use transport controls in the notification:
 
 #### AndroidManifest info
 - Add the RhapsodyPlaybackService to the manifest
+```xml
 <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
+```
 - To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
+```xml
 <receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
 	<intent-filter>
 		<action android:name="android.intent.action.MEDIA_BUTTON" />
 	</intent-filter>
 </receiver>
+```
