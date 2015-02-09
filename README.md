@@ -56,18 +56,19 @@ You might be asked to install additional components such as build tools. You may
 - Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
 
 #### Loggin in
-- Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
+Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
 ```java
 token = new AuthToken(accessToken, refreshToken, expiresIn)
-```
-```java
 rhapsody.getSessionManager().openSession(token, mySessionCallback)
 ```
-- You probably want to listen to playback state changes and errors: 
+You probably want to listen to playback state changes and errors: 
 ```java
 rhapsody.getPlayer().addStateListener(myPlayerStateListener)
 ```
-- Play a track with player.play(trackId)
+Play a track:
+```java
+player.play(trackId)
+```
 
 #### Extras
 If you want to use transport controls in the notification:
