@@ -55,7 +55,7 @@ You might be asked to install additional components such as build tools. You may
 - add playback service <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
 - Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
 
-#### Loggin in
+#### Logging in
 Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
 ```java
 token = new AuthToken(accessToken, refreshToken, expiresIn)
@@ -65,7 +65,7 @@ You probably want to listen to playback state changes and errors:
 ```java
 rhapsody.getPlayer().addStateListener(myPlayerStateListener)
 ```
-Play a track:
+And play a track:
 ```java
 player.play(trackId)
 ```
@@ -73,23 +73,27 @@ player.play(trackId)
 #### Extras
 If you want to use transport controls in the notification:
 - make your notification layouts (expanded, standard or both)
-- implement AbstractNotificationProperties
-- player.setNotificationProperties(myNotificationProperties)
-- implement NotificationActionListener
-- player.registerNotificationActionListener(myNotificationActionListener)
+- implement AbstractNotificationProperties and set them:
+```java
+player.setNotificationProperties(myNotificationProperties)
+```
+- implement NotificationActionListener and set it:
+```java
+player.registerNotificationActionListener(myNotificationActionListener)
+```
 
 ##### Notes
 - play/pause and close are handled by the sdk, you handle previous/next and open player actions
 - ExpandedNotification can only be used in SDK 16 and up
-- Do to issues on certain devices, you may only see a standard notification even though you have defined a layout with transport controls.
+- Due to issues on certain devices, you may only see a standard notification even though you have defined a layout with transport controls.
 
 
 #### AndroidManifest info
-- Add the RhapsodyPlaybackService to the manifest
+Add the RhapsodyPlaybackService to the manifest
 ```xml
 <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
 ```
-- To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
+To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
 ```xml
 <receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
 	<intent-filter>
