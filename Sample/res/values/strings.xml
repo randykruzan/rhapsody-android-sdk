@@ -1,7 +1,0 @@
-<resources>
-
-    <string name="app_name">Rhapsody Sdk Sample</string>
-    <string name="logout">logout</string>
-    <string name="login">login</string>
-
-</resources>

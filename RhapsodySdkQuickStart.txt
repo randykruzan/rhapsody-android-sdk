@@ -2,10 +2,6 @@ Requires Android SDK 14
 
 Dependencies:
 android-support-v4
-dagger
-retrofit
-javax.inject
-gson
 
 To play a track you need to:
 
