@@ -39,7 +39,7 @@ The Rhapsody Android SDK uses these permissions:
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 
-##### Permissions explained
+Permissions explained
 android.permission.INTERNET - We use this to access Internet to send and receive data.
 android.permission.WAKE_LOCK - We use this permission to keep the device from turning off the network during playback if the app is backgrounded.
 android.permission.READ_PHONE_STATE - We use this to properly handle audio during events such as phone calls.
@@ -48,7 +48,7 @@ Add the RhapsodyPlaybackService to the manifest:
 ```xml
 <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
 ```
-To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
+In order for the SDK to receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
 ```xml
 <receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
 	<intent-filter>
@@ -75,16 +75,13 @@ player.registerNotificationActionListener(myNotificationActionListener)
 - Due to issues on certain devices, you may only see a standard notification even though you have defined a layout with transport controls.
 
 
-#### AndroidManifest info
-Add the RhapsodyPlaybackService to the manifest
-```xml
-<service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
+#### Proguard/DexGuard
+If you use ProGuard or DexGuard, you should add these to your properties file:
+```code
+-keep class com.rhapsody.cedar.** { *; }
+-keep class com.rhapsody.player.** { *; }
+-keep interface com.rhapsody.cedar.** { *; }
+-keep interface com.rhapsody.player.** { *; }
 ```
-To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
-```xml
-<receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
-	<intent-filter>
-		<action android:name="android.intent.action.MEDIA_BUTTON" />
-	</intent-filter>
-</receiver>
-```
+
+
