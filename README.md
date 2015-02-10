@@ -1,76 +1,64 @@
 # Rhapsody Android SDK
 
 ## Current Version
-The current version of the Rhapsody Android SDK is 1.1
+The current version of the Rhapsody Android SDK is 1.1.
 
 ## Introduction
-The Rhapsody Android SDK was designed to provide a very easy way to integrate streaming music into your Android application. The SDK itself handles playback and is used in conjunction with the [Rhapsody Developer API](http://developer.rhapsody.com) to give your users access to over 18 million tracks. The SDK plays full-length tracks for authenticated Rhapsody subscribers.
+The Rhapsody Android SDK was designed to provide a very easy way to integrate streaming music into your Android application. The SDK itself handles playback and is used in conjunction with the [Rhapsody Developer API](http://developer.rhapsody.com) to give your users access to over millions of tracks. The SDK plays full-length tracks for authenticated Rhapsody subscribers.
 
-We have provided here the SDK (rhapsodysdk.jar) and a sample application which provides examples you can use to build your own app with Rhapsody streaming music.
+We have provided here the SDK ([rhapsodysdk.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/rhapsodysdk.jar)) and two sample applications inside the SampleProject which provide examples you can use to build your own app with Rhapsody streaming music.
 
+## Requirements
+- AndroidStudio 1.0 or higher
+- Android SDK 4.0 (API 14) or higher
+- Android BuildTools 21.1.2 for the SampleProject (Recommend using latest available)
+- android-support-v4.jar
+- Picasso
+- Retrofit
+- gson
 
-## Rhapsody SDK
-
-#### Android Version Support
-The Rhapsody Android SDK supports Android 4.0 (API 14) and up.
-
-#### SDK Requirements
-- Android SDK 14 or higher
-
-#### Download
-The Rhapsody Android SDK is available as a jar. You can download the rhapsodysdk.jar and add it to your Android Studio project gradle.build file:
+#### SDK Only
+The Rhapsody Android SDK is available as a jar. You can download the [rhapsodysdk.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/rhapsodysdk.jar) and add it to your Android Studio project gradle.build file:
 
 ```groovy
 compile files('libs/rhapsodysdk.jar')
 ```
 
-## Rhapsody SDK Sample App
+#### SampleProject
 
-#### Sample App Requirements
-- AndroidStudio 1.0 or higher
-- Android SDK 14 or higher
-- Android BuildTools 21.1.2 (Recommend using latest available)
-
-
-Android Studio will pull down these additional dependencies:
-- Picasso
-- Retrofit
-- gson
-
-
-#### Quickstart
-
-Using Import Project in Android Studio, select the SampleProject folder. After importing, run a Gradle Sync, and you should be ready to build and deploy the sample apps to your device. 
+Using Import Project in Android Studio, select the SampleProject folder. After importing, run gradle sync, and you should be ready to build and deploy the sample apps to your device. 
 
 You might be asked to install additional components such as build tools. You may either install them or change the required version in the build.gradle to one you have installed already.
 
 
-#### Playing a track
-- include following permissions
+#### AndroidManifest information
+The Rhapsody Android SDK uses these permissions:
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
-- add playback service <service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
-- Rhapsody.register with your api key and secret (see https://developer.rhapsody.com/)
 
-#### Logging in
-Setup OAuth(see https://developer.rhapsody.com/api#authentication) and use rhapsody.getLoginUrl() to get to a login form
-```java
-token = new AuthToken(accessToken, refreshToken, expiresIn)
-rhapsody.getSessionManager().openSession(token, mySessionCallback)
+##### Permissions explained
+android.permission.INTERNET - We use this to access Internet to send and receive data.
+android.permission.WAKE_LOCK - We use this permission to keep the device from turning off the network during playback if the app is backgrounded.
+android.permission.READ_PHONE_STATE - We use this to properly handle audio during events such as phone calls.
+
+Add the RhapsodyPlaybackService to the manifest:
+```xml
+<service android:name="com.rhapsody.player.RhapsodyPlaybackService" />
 ```
-You probably want to listen to playback state changes and errors: 
-```java
-rhapsody.getPlayer().addStateListener(myPlayerStateListener)
-```
-And play a track:
-```java
-player.play(trackId)
+To receive key events (e.g. from lock screen controls, Bluetooth headsets, etc) add the com.rhapsody.player.MediaButtonReceiver to the manifest.
+```xml
+<receiver android:name="com.rhapsody.player.MediaButtonReceiver" >
+	<intent-filter>
+		<action android:name="android.intent.action.MEDIA_BUTTON" />
+	</intent-filter>
+</receiver>
 ```
 
-#### Extras
+
+#### Notifications
 If you want to use transport controls in the notification:
 - make your notification layouts (expanded, standard or both)
 - implement AbstractNotificationProperties and set them:
@@ -82,8 +70,7 @@ player.setNotificationProperties(myNotificationProperties)
 player.registerNotificationActionListener(myNotificationActionListener)
 ```
 
-##### Notes
-- play/pause and close are handled by the sdk, you handle previous/next and open player actions
+##### Notifications notes
 - ExpandedNotification can only be used in SDK 16 and up
 - Due to issues on certain devices, you may only see a standard notification even though you have defined a layout with transport controls.
 
