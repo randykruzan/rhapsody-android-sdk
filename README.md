@@ -40,6 +40,7 @@ The Rhapsody Android SDK uses these permissions:
 ```
 
 Permissions explained
+
 android.permission.INTERNET - We use this to access Internet to send and receive data.
 android.permission.WAKE_LOCK - We use this permission to keep the device from turning off the network during playback if the app is backgrounded.
 android.permission.READ_PHONE_STATE - We use this to properly handle audio during events such as phone calls.
