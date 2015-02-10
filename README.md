@@ -76,7 +76,7 @@ player.registerNotificationActionListener(myNotificationActionListener)
 - Due to issues on certain devices, you may only see a standard notification even though you have defined a layout with transport controls.
 
 
-#### Proguard/DexGuard
+#### ProGuard/DexGuard
 If you use ProGuard or DexGuard, you should add these to your properties file:
 ```code
 -keep class com.rhapsody.cedar.** { *; }
