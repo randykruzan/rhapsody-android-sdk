@@ -13,7 +13,7 @@ We have provided here the SDK ([rhapsodysdk.jar](https://github.com/Rhapsody/rha
 - Android SDK 4.0 (API 14) or higher
 - Android BuildTools 21.1.2 for the SampleProject (Recommend using latest available)
 - android-support-v4.jar
-- Picasso
+- Picasso (SampleProject only)
 - Retrofit
 - gson
 
