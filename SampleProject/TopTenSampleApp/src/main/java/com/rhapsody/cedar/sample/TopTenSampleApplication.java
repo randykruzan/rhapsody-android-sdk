@@ -54,12 +54,12 @@ public class TopTenSampleApplication extends RhapsodySampleApplication {
     private AppInfo topTenSampleAppInfo = new AppInfo() {
         @Override
         public String getApiKey() {
-            return "NjQzYThjNTEtNmUwOS00NjA1LTg1Y2MtMzkwNTcyZWIyZjk4";
+            return "YOUR-API-KEY";
         }
 
         @Override
         public String getSecret() {
-            return "YjE3MGNmZWItZDU3NS00ZjJiLWIwYmMtZjliOTBlNmU4ODBm";
+            return "YOUR-SECRET";
         }
 
         @Override

@@ -58,12 +58,12 @@ public class StationPlayerSampleApplication extends RhapsodySampleApplication {
     private AppInfo stationPlayerAppInfo = new AppInfo() {
         @Override
         public String getApiKey() {
-            return "ZTU5NmEwY2ItN2ZiZi00ODc5LWFhNzUtZjJhOWUwODQ2YmFm";
+            return "YOUR-API-KEY";
         }
 
         @Override
         public String getSecret() {
-            return "ZTk0NjJjY2UtYWY2MS00ODhiLTgzYzAtNTY2MDgxOGI5YTRk";
+            return "YOUR-SECRET";
         }
 
         @Override
