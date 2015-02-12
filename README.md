@@ -6,7 +6,7 @@ The current version of the Rhapsody Android SDK is 1.1.
 ## Introduction
 The Rhapsody Android SDK was designed to provide a very easy way to integrate streaming music into your Android application. The SDK itself handles playback and is used in conjunction with the [Rhapsody Developer API](http://developer.rhapsody.com) to give your users access to over millions of tracks. The SDK plays full-length tracks for authenticated Rhapsody subscribers.
 
-We have provided here the SDK ([RhapsodySdk_1.1.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/RhapsodySdk_1.1.jar)) and two sample applications inside the SampleProject which provide examples you can use to build your own app with Rhapsody streaming music.
+We have provided here the SDK ([rhapsody-sdk-1.1.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/rhapsody-sdk-1.1.jar)) and two sample applications inside the SampleProject which provide examples you can use to build your own app with Rhapsody streaming music.
 
 ## Requirements
 - AndroidStudio 1.0 or higher
@@ -18,7 +18,7 @@ We have provided here the SDK ([RhapsodySdk_1.1.jar](https://github.com/Rhapsody
 - gson
 
 #### SDK Only
-The Rhapsody Android SDK is available as a jar. You can download the [RhapsodySdk_1.1.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/RhapsodySdk_1.1.jar) and add it to your Android Studio project gradle.build file:
+The Rhapsody Android SDK is available as a jar. You can download the [rhapsody-sdk-1.1.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/rhapsody-sdk-1.1.jar) and add it to your Android Studio project gradle.build file:
 
 ```groovy
 compile files('libs/rhapsodysdk.jar')
