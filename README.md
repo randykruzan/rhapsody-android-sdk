@@ -21,7 +21,7 @@ We have provided here the SDK ([rhapsody-sdk-1.1.jar](https://github.com/Rhapsod
 The Rhapsody Android SDK is available as a jar. You can download the [rhapsody-sdk-1.1.jar](https://github.com/Rhapsody/rhapsody-android-sdk/blob/1.1/rhapsody-sdk-1.1.jar) and add it to your Android Studio project gradle.build file:
 
 ```groovy
-compile files('libs/rhapsodysdk.jar')
+compile files('libs/rhapsody-sdk-1.1.jar')
 ```
 
 #### SampleProject
